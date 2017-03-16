@@ -1,0 +1,19 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<CatalogoClientes.Dominio.Entidades.Cliente>
+
+
+@{
+    ViewBag.Title = "Catalago de Clientes";
+}
+
+@foreach (var p in Model)
+{
+    @Html.Partial("_CatalogoResumo", p)
+}
+
+<p class="text-primary">
+    Página @Model.PageNumber de @Model.PageNumber
+</p>
+<span class="btn-group pull-right">
+    @Html.PagedListPager(Model, pagina => Url.Action("Catalogo", new { pagina }))
+</span>

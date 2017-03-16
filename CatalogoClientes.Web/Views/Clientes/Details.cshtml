@@ -1,0 +1,58 @@
+﻿@model CatalogoClientes.Dominio.Entidades.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="clientes panel panel-primary">
+    <div class="panel-heading panel-head">Cadastro de Clientes</div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            @if (Model.Imagem != null)
+            {
+                <dt>
+                    Imagem
+                </dt>
+                    <dd>
+                        <img src="@Url.Action("ExibirImagem", "Arquivo", new { id = Model.ClienteId })" width="150" height="150" />
+                    </dd>
+            }
+            else
+            {
+                <dt>
+                    Imagem
+                </dt>
+                    <dd>
+                        <img src="~/Imagens/semimagem.jpg" width="150" height="150" />
+                    </dd>
+
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Endereco)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.ClienteId },new { @class="btn btn-success"}) |
+        @Html.ActionLink("Retornar", "Index", new { @class="btn btn-primary"})
+    </p>
+</div>

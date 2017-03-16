@@ -1,0 +1,52 @@
+﻿@model CatalogoClientes.Dominio.Entidades.Cliente
+<div class="clientes panel panel-primary">
+    <div class="panel-heading panel-head">Cadastro de Clientes</div>
+    <div class="panel-body">
+        <a id="CriarCleinte" href="@Url.Action("Create")" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"> Incluir Cliente</span>
+        </a>
+        <table>
+            <tr>
+                <td rowspan="3">
+                    @if (Model.Imagem != null)
+                    {
+                        <div class="pull-left" style="margin-right:10px">
+                            <img class="img-thumbnail" src="@Url.Action("ExibirImagem","arquivo",new { id=Model.ClienteId})" width="150" height="150" />
+                        </div>
+                    }
+                    else
+                    {
+                            <div class="pull-left" style="margin-right:10px">
+                                <img class="img-thumbnail" src="~/Imagens/semimagem.jpg" width="150" height="150" />
+                            </div>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-lg">
+                        <strong>@Model.Nome</strong>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    @Model.Email
+                    <br />
+                    @Model.Endereco
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="btn-group">
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.ClienteId }, new { @class="btn btn-success"}) 
+
+                        @Html.ActionLink("Detalhes", "Details", new { id = Model.ClienteId }, new { @class = "btn btn-primary" })
+
+                        @Html.ActionLink("Deletar", "Delete", new { id = Model.ClienteId }, new { @class = "btn btn-danger" })
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
